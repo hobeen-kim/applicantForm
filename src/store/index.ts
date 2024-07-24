@@ -8,9 +8,12 @@ export interface CardProps {
   id: string;
   cardTitle: string;
   inputType: string;
+  subText: string;
+  placeholder: string;
   contents: string | ItemTypeProps[];
   isFocused: boolean;
   isRequired: boolean;
+  lengthMin?: number;
 }
 
 export interface ItemTypeProps {
@@ -30,7 +33,8 @@ interface ActionProps {
 
 export interface StateProps {
   cards: CardProps[];
-  required: string;
+  required: [];
+  lengthMin: [];
   _persist: PersistState;
 }
 
@@ -47,6 +51,8 @@ const initialCards = {
   id: "TitleCard",
   cardTitle: "제목 없는 설문지",
   inputType: InputTypes.TITLE,
+  subText: "",
+  placeholder: "",
   contents: "",
   isFocused: false,
   isRequired: false,
@@ -56,6 +62,8 @@ const createNewCard = (cardId: string, cardTitle = "") => ({
   id: cardId,
   cardTitle,
   inputType: InputTypes.RADIO,
+  subText: "",
+  placeholder: "",
   contents: [
     {
       id: String(Number(cardId) + 1),
@@ -86,11 +94,36 @@ const deleteEtcItem = (currentContents: ItemTypeProps[]) => {
 
 const requiredSlice = createSlice({
   name: "Required",
-  initialState: "",
+  initialState: [] as string[],  // 상태를 문자열 배열로 설정
   reducers: {
-    setRequiredCardId: (state: string, action: ActionProps) => action.payload.cardId,
-    removeRequiredCardId: () => "",
-  },
+    setRequiredCardId: (state, action: { payload: { cardId: string } }) => {
+      if (!state.includes(action.payload.cardId)) {
+        state.push(action.payload.cardId);
+      }
+    },
+    removeRequiredCardId: (state, action: { payload: { cardId: string } }) => {
+      const newState = state.filter((id) => id !== action.payload.cardId);
+
+      return newState;
+    },
+  }
+});
+
+const lengthMinSlice = createSlice({
+  name: "LengthMin",
+  initialState: [] as string[],  // 상태를 문자열 배열로 설정
+  reducers: {
+    setLengthMinCardId: (state, action: { payload: { cardId: string } }) => {
+      if (!state.includes(action.payload.cardId)) {
+        state.push(action.payload.cardId);
+      }
+    },
+    removeLengthMinCardId: (state, action: { payload: { cardId: string } }) => {
+      const newState = state.filter((cardId) => cardId !== action.payload.cardId);
+
+      return newState;
+    },
+  }
 });
 
 const cardSlice = createSlice({
@@ -275,6 +308,7 @@ const cardSlice = createSlice({
 const reducers = combineReducers({
   cards: cardSlice.reducer,
   required: requiredSlice.reducer,
+  lengthMin: lengthMinSlice.reducer,
 });
 
 const persistConfig = {
@@ -312,5 +346,7 @@ export const {
   initCards,
 } = cardSlice.actions;
 export const { setRequiredCardId, removeRequiredCardId } = requiredSlice.actions;
+
+export const { setLengthMinCardId, removeLengthMinCardId } = lengthMinSlice.actions;
 
 export default store;

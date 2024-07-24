@@ -7,11 +7,11 @@ export const Container = styled.div`
   margin-top: 16px;
 `;
 
-export const Card = styled.div<{ needToCompleteRequired: boolean }>`
+export const Card = styled.div<{ needToCompleteRequired: boolean, needToCompleteLengthMin: boolean }>`
   display: flex;
   flex-direction: column;
-  border: ${({ theme, needToCompleteRequired }) =>
-    needToCompleteRequired
+  border: ${({ theme, needToCompleteRequired, needToCompleteLengthMin }) =>
+    needToCompleteRequired || needToCompleteLengthMin
       ? `1px solid ${theme.colors.RED}`
       : `1px solid ${theme.colors.GREY_HEAVY}`};
   border-radius: 8px;
@@ -41,6 +41,18 @@ export const RequiredSection = styled.div`
 `;
 
 export const RequiredSpan = styled.span`
+  font-size: 12px;
+  color: ${({ theme }) => theme.colors.RED};
+`;
+
+export const LengthMinSection = styled.div`
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  height: 30px;
+`;
+
+export const LengthMinSpan = styled.span`
   font-size: 12px;
   color: ${({ theme }) => theme.colors.RED};
 `;

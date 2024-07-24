@@ -10,20 +10,19 @@ import {
   CardProps,
   initCards,
   InputTypes,
-  ItemTypeProps,
-  removeRequiredCardId,
+  ItemTypeProps, removeLengthMinCardId,
+  removeRequiredCardId, setLengthMinCardId,
   setRequiredCardId,
   StateProps,
 } from "../../store";
 import * as S from "./styles";
 import result from "../Result";
+import { Simulate } from "react-dom/test-utils";
+import error = Simulate.error;
 
 interface ResultCardDataProps {
   id: string;
-  title: string;
-  inputType: string;
   answer: string;
-  isRequired: boolean;
 }
 
 const Applicant = () => {
@@ -32,15 +31,9 @@ const Applicant = () => {
 
   const dispatch = useDispatch();
   const { cards } = useSelector((state: StateProps) => state);
-
-
-
   const { programId } = useParams();
 
   const sendData = async () => {
-    console.log("send data");
-
-    console.log(cards);
     const originalCardsArr = [] as CardProps[];
     cards.forEach(item => {
       if (item.inputType !== InputTypes.TITLE) {
@@ -53,10 +46,7 @@ const Applicant = () => {
     for (let i = 0; i < originalCardsArr.length; i++) {
       const resultCardData: ResultCardDataProps = {
         id: originalCardsArr[i].id,
-        title: originalCardsArr[i].cardTitle,
-        inputType: originalCardsArr[i].inputType,
         answer: methods.getValues()[originalCardsArr[i].id],
-        isRequired: originalCardsArr[i].isRequired,
       };
 
       resultCardsDataArr.push(resultCardData);
@@ -75,14 +65,18 @@ const Applicant = () => {
         cardTitle: "설문지 제목",
         inputType: InputTypes.TITLE, // Ensure InputTypes.TEXT is correctly imported and used
         contents: "제목의 contents 항목 입니다.",
+        subText: "",
+        placeholder: "",
         isFocused: false,
         isRequired: false
       },
       {
         id: "1",
         cardTitle: "Sample Card 1",
-        inputType: InputTypes.TEXTAREA, // Ensure InputTypes.TEXT is correctly imported and used
-        contents: "",
+        inputType: InputTypes.TEXT, // Ensure InputTypes.TEXT is correctly imported and used
+        contents: "card 1 contents 항목",
+        subText: "card 1 subText",
+        placeholder: "card 1 placeholder text",
         isFocused: false,
         isRequired: true
       },
@@ -91,8 +85,41 @@ const Applicant = () => {
         cardTitle: "Sample Card 2",
         inputType: InputTypes.RADIO, // Ensure InputTypes.RADIO is correctly imported and used
         contents: [{ id: "1", text: "Option 1" }, { id: "2", text: "Option 2", isEtc: true }],
+        subText: "card 1 subText",
+        placeholder: "card 1 placeholder text",
         isFocused: false,
         isRequired: false
+      },
+      {
+        id: "3",
+        cardTitle: "Sample Card 3",
+        inputType: InputTypes.SELECT, // Ensure InputTypes.RADIO is correctly imported and used
+        contents: [{ id: "3", text: "Option 1" }, { id: "4", text: "Option 2" }],
+        subText: "card 1 subText",
+        placeholder: "card 1 placeholder text",
+        isFocused: false,
+        isRequired: false
+      },
+      {
+        id: "4",
+        cardTitle: "Sample Card 4",
+        inputType: InputTypes.CHECKBOX, // Ensure InputTypes.RADIO is correctly imported and used
+        contents: [{ id: "5", text: "Option 1" }, { id: "6", text: "Option 2" }],
+        subText: "card 1 subText",
+        placeholder: "card 1 placeholder text",
+        isFocused: false,
+        isRequired: false
+      },
+      {
+        id: "5",
+        cardTitle: "Sample Card 5 - 장문형",
+        inputType: InputTypes.TEXTAREA, // Ensure InputTypes.RADIO is correctly imported and used
+        contents: "",
+        subText: "300자 이상 작성해주세요.",
+        placeholder: "card 1 placeholder text",
+        isFocused: false,
+        isRequired: true,
+        lengthMin: 20
       }
     ];
 
@@ -111,6 +138,7 @@ const Applicant = () => {
   }, []);
 
   const handleClick = () => {
+    let errorCount = 0;
     const CardIdArr = Object.keys(methods.getValues());
     for (let i = 0; i < CardIdArr.length; i++) {
       for (let j = 1; j < cards.length; j++) {
@@ -119,26 +147,40 @@ const Applicant = () => {
             const isRequiredComplete = Object.values(methods.getValues()[cards[j].id]).some(
               (value) => !!value,
             );
-            if (isRequiredComplete) {
-              dispatch(removeRequiredCardId());
-              continue;
-            } else {
+            if (!isRequiredComplete) {
               dispatch(setRequiredCardId({ cardId: cards[j].id }));
-              throw new Error("필수값 입력 필요");
+              errorCount++;
+            } else {
+              dispatch(removeRequiredCardId( { cardId: cards[j].id }));
             }
           } else {
             const isRequiredComplete = !!methods.getValues()[cards[j].id];
 
-            if (isRequiredComplete) {
-              dispatch(removeRequiredCardId());
-              continue;
-            } else {
+            if (!isRequiredComplete) {
               dispatch(setRequiredCardId({ cardId: cards[j].id }));
-              throw new Error("필수값 입력 필요");
+              errorCount++;
+            } else {
+              dispatch(removeRequiredCardId( { cardId: cards[j].id }));
             }
           }
         }
+        if (CardIdArr[i] === cards[j].id && cards[j].lengthMin !== undefined) {
+
+          const length = cards[j].lengthMin ?? 0;
+
+          if(length === 0 || methods.getValues()[cards[j].id] === undefined) continue;
+
+          if (methods.getValues()[cards[j].id].length < length) {
+            dispatch(setLengthMinCardId({ cardId: cards[j].id }));
+            errorCount++;
+          } else {
+            dispatch(removeLengthMinCardId({ cardId: cards[j].id }));
+          }
+        }
       }
+    }
+    if(errorCount > 0) {
+      throw new Error("입력값 확인");
     }
   };
 

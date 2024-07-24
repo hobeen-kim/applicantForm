@@ -15,7 +15,9 @@ const InputTextField = ({ id }: Pick<CardProps, "id">) => {
       name={id}
       control={control}
       render={({ field: { onChange } }) => (
-        <S.TextField
+        <S.TextAreaField
+          multiline
+          minRows={3} // Adjust this value as needed
           onChange={onChange}
           id="standard-basic"
           variant="standard"
