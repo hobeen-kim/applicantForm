@@ -28,7 +28,7 @@ export const CheckboxContainer = styled.div`
 `;
 
 export const Checkbox = styled.input`
-  display: none;
+    display: none;
 
   + label {
     cursor: pointer;
@@ -47,13 +47,26 @@ export const Checkbox = styled.input`
     }
   }
 
-  :checked {
-    + label {
-      ::before {
-        content: "";
-        background-color: ${({ theme }) => theme.colors.BLUE_HEAVY};
-        border-color: ${({ theme }) => theme.colors.BLUE_HEAVY};
-      }
-    }
-  }
+    :checked {
+        + label {
+            ::before {
+                content: "";
+                background-color: white;
+                border-color: ${({ theme }) => theme.colors.BLUE_HEAVY};
+            }
+
+            ::after {
+                content: "";
+                position: relative;
+                left: 7px;
+                top: -18px;
+                width: 4px;
+                height: 10px;
+                border: solid ${({ theme }) => theme.colors.BLUE_HEAVY};
+                border-width: 0 2px 2px 0;
+                transform: rotate(45deg);
+                display: block;
+                margin-bottom: -12px;
+            }
+        }
 `;
