@@ -3,22 +3,21 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useForm, FormProvider } from "react-hook-form";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import PreviewCard from "../../components/PreviewCard";
 import {
   CardProps,
   initCards,
   InputTypes,
-  ItemTypeProps, removeLengthMinCardId,
+  removeLengthMinCardId,
   removeRequiredCardId, setLengthMinCardId,
   setRequiredCardId,
   StateProps,
 } from "../../store";
 import * as S from "./styles";
-import result from "../Result";
-import { Simulate } from "react-dom/test-utils";
-import error = Simulate.error;
+import PartnerLink from "../../components/PartnerLink";
+import PageFooter from "../../components/PageFooter";
 
 interface ResultCardDataProps {
   id: string;
@@ -33,6 +32,9 @@ const Applicant = () => {
   const { cards } = useSelector((state: StateProps) => state);
   const { programId } = useParams();
   const [ complete, setComplete ] = useState("");
+  const [ partnerLink, setPartnerLink ] = useState("");
+  const [ partnerImage, setPartnerImage ] = useState("");
+  const [ partnerName, setPartnerName ] = useState("");
 
   const sendData = async () => {
     const originalCardsArr = [] as CardProps[];
@@ -60,7 +62,11 @@ const Applicant = () => {
 
     const isRequire = false;
 
-    console.log("질문을 받아옵니다.")
+    console.log("데이터를 받아옵니다.")
+
+    setPartnerLink('https://www.instagram.com/accounts/suspended/?next=https%3A%2F%2Fwww.instagram.com%2Fyouth_sketch%2F%3F__coig_ufac%3D1');
+    setPartnerImage('https://form.monthler.kr/youth-sketch/logo1.png')
+    setPartnerName('청춘스케치마을')
 
     setComplete("<h2>광양 청춘스케치마을 청년 한달살기 신청이 완료되었습니다💙</h2>\n" +
       "소중한 지원 감사합니다!<br>" +
@@ -385,12 +391,13 @@ const Applicant = () => {
           try {
             handleClick();
             sendData();
-            navigate(`/form/complete/${programId}`, { state: { complete } });
+            navigate(`/form/complete/${programId}`, { state: { complete, partnerLink, partnerImage, partnerName } });
           } catch (e) {
             console.dir(e);
           }
         })}
       >
+        <PartnerLink link={partnerLink} image={partnerImage} />
         {cards.map((card) => (
           <PreviewCard key={card.id} id={card.id} />
         ))}
@@ -398,6 +405,7 @@ const Applicant = () => {
           <S.SubmitButton type="submit">제출</S.SubmitButton>
         </S.PreviewSubmitSection>
       </form>
+      <PageFooter partnerName={partnerName} />
     </FormProvider>
   );
 };

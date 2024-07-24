@@ -19,7 +19,7 @@ export const ClearButton = styled.button`
 `;
 
 export const SubmitButton = styled.button`
-  width: 72px;
+  width: 100%;
   height: 36px;
   background-color: ${({ theme }) => theme.colors.BLUE_HEAVY};
   color: ${({ theme }) => theme.colors.WHITE};
