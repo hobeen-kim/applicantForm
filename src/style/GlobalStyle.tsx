@@ -47,7 +47,6 @@ const GlobalStyle = createGlobalStyle`
     }
     
     b {
-        font-size: 14px;
         vertical-align: baseline;
         font-family: Arial, sans-serif;
         line-height: 1.2;

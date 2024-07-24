@@ -32,6 +32,7 @@ const Applicant = () => {
   const dispatch = useDispatch();
   const { cards } = useSelector((state: StateProps) => state);
   const { programId } = useParams();
+  const [ complete, setComplete ] = useState("");
 
   const sendData = async () => {
     const originalCardsArr = [] as CardProps[];
@@ -57,7 +58,16 @@ const Applicant = () => {
 
   const getCardProps = () => {
 
+    const isRequire = false;
+
     console.log("질문을 받아옵니다.")
+
+    setComplete("<h2>광양 청춘스케치마을 청년 한달살기 신청이 완료되었습니다💙</h2>\n" +
+      "소중한 지원 감사합니다!<br>" +
+      "선정결과 발표는 <b>1차 8월 2일, 추가발표 8월 9일에 개별 문자로 발송</b>됩니다. <br>문의는 언제든 하단의 번호 및 메일로 연락주세요.<br>" +
+      "<br>" +
+      "* 청춘스케치마을 PD (010-5523-6630)<br>" +
+      "* YouthSketch92@gmail.com")
 
     const newCustomCards: CardProps[] = [
       {
@@ -91,7 +101,7 @@ const Applicant = () => {
         subText: "",
         placeholder: "이름을 입력하세요",
         isFocused: false,
-        isRequired: true
+        isRequired: isRequire
       },
       {
         id: "2",
@@ -101,7 +111,7 @@ const Applicant = () => {
         subText: "",
         placeholder: "",
         isFocused: false,
-        isRequired: true,
+        isRequired: isRequire,
       },
       {
         id: "3",
@@ -111,7 +121,7 @@ const Applicant = () => {
         subText: "<p style='color: blue'>* 자격사항: 2004년생 이상 (만 20세)<br>* 주민등록 등본 제출 (필수)</p>",
         placeholder: "19881018",
         isFocused: false,
-        isRequired: true,
+        isRequired: isRequire,
       },
       {
         id: "4",
@@ -121,7 +131,7 @@ const Applicant = () => {
         subText: "",
         placeholder: "01012341234",
         isFocused: false,
-        isRequired: true,
+        isRequired: isRequire,
       },
       {
         id: "5",
@@ -131,7 +141,7 @@ const Applicant = () => {
         subText: "",
         placeholder: "서울시 용산구",
         isFocused: false,
-        isRequired: true,
+        isRequired: isRequire,
       },
       {
         id: "6",
@@ -141,7 +151,7 @@ const Applicant = () => {
         subText: "",
         placeholder: "nomadc.monthler@gmail.com",
         isFocused: false,
-        isRequired: true,
+        isRequired: isRequire,
       },
       {
         id: "7",
@@ -151,7 +161,7 @@ const Applicant = () => {
         subText: "",
         placeholder: "https://instagram.com/nomadc.anna",
         isFocused: false,
-        isRequired: true,
+        isRequired: isRequire,
       },
       {
         id: "8",
@@ -161,7 +171,7 @@ const Applicant = () => {
         subText: "",
         placeholder: "https://blog.naver.com/snsrrkfdk34",
         isFocused: false,
-        isRequired: true,
+        isRequired: isRequire,
       },
       {
         id: "9",
@@ -174,7 +184,7 @@ const Applicant = () => {
         subText: "",
         placeholder: "",
         isFocused: false,
-        isRequired: true,
+        isRequired: isRequire,
       },
       {
         id: "10",
@@ -186,7 +196,7 @@ const Applicant = () => {
         subText: "",
         placeholder: "",
         isFocused: false,
-        isRequired: true,
+        isRequired: isRequire,
       },
       {
         id: "11",
@@ -196,7 +206,7 @@ const Applicant = () => {
         subText: "최대한 자세하게 작성해주세요.",
         placeholder: "",
         isFocused: false,
-        isRequired: true,
+        isRequired: isRequire,
       },
       {
         id: "12",
@@ -206,7 +216,7 @@ const Applicant = () => {
         subText: "<span style='color: blue'>직장인이면 하고 있는 업무, 학생이면 어떤 과, 그 외 어떤 분야에 관심을 두고 있는지 작성해주세요</span>",
         placeholder: "",
         isFocused: false,
-        isRequired: true,
+        isRequired: isRequire,
       },
       {
         id: "13",
@@ -216,7 +226,7 @@ const Applicant = () => {
         subText: "",
         placeholder: "",
         isFocused: false,
-        isRequired: true,
+        isRequired: isRequire,
       },
       {
         id: "14",
@@ -227,7 +237,7 @@ const Applicant = () => {
           "요리, 청소, 댄스, 유머, 노래, 소통 등 모두 환영합니다</span>",
         placeholder: "",
         isFocused: false,
-        isRequired: true,
+        isRequired: isRequire,
       },
       {
         id: "15",
@@ -237,7 +247,7 @@ const Applicant = () => {
         subText: "",
         placeholder: "",
         isFocused: false,
-        isRequired: true,
+        isRequired: isRequire,
       },
       {
         id: "16",
@@ -247,7 +257,7 @@ const Applicant = () => {
         subText: "",
         placeholder: "",
         isFocused: false,
-        isRequired: true,
+        isRequired: isRequire,
       },
       {
         id: "17",
@@ -258,7 +268,7 @@ const Applicant = () => {
           "- 첨부파일로 제출시 신청서폰 맨 아래에 있는 [자료첨부]에 첨부해주세요.</span>",
         placeholder: "포트폴리오 링크 주소",
         isFocused: false,
-        isRequired: true,
+        isRequired: isRequire,
       },
       {
         id: "18",
@@ -269,7 +279,7 @@ const Applicant = () => {
                   "<img src='https://form.monthler.kr/youth-sketch/p1.png'/>",
         placeholder: "",
         isFocused: false,
-        isRequired: true,
+        isRequired: isRequire,
       },
       {
         id: "19",
@@ -279,7 +289,7 @@ const Applicant = () => {
         subText: "우리의 청춘을 추억으로 남길 수 있도록 활동 사진 및 영상을 촬영할 계획입니다.",
         placeholder: "",
         isFocused: false,
-        isRequired: true,
+        isRequired: isRequire,
       },
       {
         id: "20",
@@ -291,7 +301,7 @@ const Applicant = () => {
           "* 합격자에 한하여 보증금 계좌 안내",
         placeholder: "",
         isFocused: false,
-        isRequired: true,
+        isRequired: isRequire,
       },
       {
         id: "21",
@@ -303,7 +313,7 @@ const Applicant = () => {
           "(3) 포트폴리오 (필수)</span>",
         placeholder: "",
         isFocused: false,
-        isRequired: true,
+        isRequired: isRequire,
         lengthMin: 3
       },
     ];
@@ -374,8 +384,8 @@ const Applicant = () => {
         onSubmit={methods.handleSubmit(() => {
           try {
             handleClick();
-            // navigate("/preview/result", { state: methods.getValues() });
             sendData();
+            navigate(`/form/complete/${programId}`, { state: { complete } });
           } catch (e) {
             console.dir(e);
           }

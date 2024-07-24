@@ -5,6 +5,7 @@ import Form from "./pages/Form";
 import Preview from "./pages/Preview";
 import Result from "./pages/Result";
 import Applicant from "./pages/Applicant";
+import Complete from "./pages/Complete";
 
 const App = () => (
   <BrowserRouter>
@@ -13,6 +14,7 @@ const App = () => (
       <Route path="/form/:programId" element={<Form />} />
       <Route path="/preview" element={<Preview />} />
       <Route path="/form/applicant/:programId" element={<Applicant />} />
+      <Route path="/form/complete/:programId" element={<Complete />} />
       <Route path="/preview/result" element={<Result />} />
     </Routes>
   </BrowserRouter>
