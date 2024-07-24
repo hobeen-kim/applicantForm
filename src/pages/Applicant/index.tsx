@@ -343,7 +343,7 @@ const Applicant = () => {
     for (let i = 0; i < CardIdArr.length; i++) {
       for (let j = 1; j < cards.length; j++) {
         if (CardIdArr[i] === cards[j].id && cards[j].isRequired) {
-          if (typeof cards[j].contents === "object" && cards[j].inputType !== InputTypes.RADIO) {
+          if (typeof cards[j].contents === "object" && cards[j].inputType !== InputTypes.RADIO && cards[j].inputType !== InputTypes.FILE) {
             const isRequiredComplete = Object.values(methods.getValues()[cards[j].id]).some(
               (value) => !!value,
             );
@@ -364,11 +364,11 @@ const Applicant = () => {
             }
           }
         }
-        if (CardIdArr[i] === cards[j].id && cards[j].lengthMin !== undefined) {
+        if (CardIdArr[i] === cards[j].id && cards[j].lengthMin !== undefined && cards[j].isRequired) {
 
           const length = cards[j].lengthMin ?? 0;
 
-          if(length === 0 || methods.getValues()[cards[j].id] === undefined) continue;
+          if(methods.getValues()[cards[j].id] === undefined) continue;
 
           if (methods.getValues()[cards[j].id].length < length) {
             dispatch(setLengthMinCardId({ cardId: cards[j].id }));

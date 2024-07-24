@@ -25,4 +25,5 @@ export const SubmitButton = styled.button`
   color: ${({ theme }) => theme.colors.WHITE};
   border: none;
   border-radius: 4px;
+  cursor: pointer;
 `;
