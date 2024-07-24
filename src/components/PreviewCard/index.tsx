@@ -10,6 +10,8 @@ import PreviewCardTitle from "../PreviewCardTitle";
 import * as S from "./styles";
 import SubText from "../SubText";
 import InputTextAreaField from "../InputTextAreaField";
+import InputFile from "../InputFile";
+import InputFileList from "../InputFileList";
 
 const PreviewCard = ({ id }: Pick<CardProps, "id">) => {
   const inputType = useSelector((state: StateProps) => {
@@ -24,10 +26,15 @@ const PreviewCard = ({ id }: Pick<CardProps, "id">) => {
   const needToCompleteRequired = requiredCardIds.includes(id);
   const needToCompleteLengthMin = lengthMinCardIds.includes(id);
 
+  const contents = useSelector((state: StateProps) => {
+    const currentCard = state.cards.find((card) => card.id === id) as CardProps;
+    return currentCard.contents;
+  }) as string;
+
   return (
     <S.Container>
       <S.Card needToCompleteRequired={needToCompleteRequired} needToCompleteLengthMin={needToCompleteLengthMin}>
-        {isTitle ? <S.TitleHighlight /> : null}
+        {isTitle ? <S.TitleHighlight image={contents}/> : null}
         <PreviewCardTitle id={id} />
         {inputType !== InputTypes.TITLE ? <SubText id={id} /> : null}
         {inputType === InputTypes.TEXT ? <InputTextField id={id} /> : null}
@@ -35,6 +42,8 @@ const PreviewCard = ({ id }: Pick<CardProps, "id">) => {
         {inputType === InputTypes.RADIO ? <InputRadio id={id} /> : null}
         {inputType === InputTypes.CHECKBOX ? <InputCheckbox id={id} /> : null}
         {inputType === InputTypes.SELECT ? <InputSelect id={id} /> : null}
+        {inputType === InputTypes.FILE ? <InputFile id={id}/> : null}
+        {inputType === InputTypes.FILE ? <InputFileList id={id}/> : null}
         {needToCompleteRequired ? (
           <S.RequiredSection>
             <S.RequiredSpan>필수 질문입니다.</S.RequiredSpan>
@@ -42,7 +51,7 @@ const PreviewCard = ({ id }: Pick<CardProps, "id">) => {
         ) : null}
         {needToCompleteLengthMin ? (
           <S.RequiredSection>
-            <S.RequiredSpan>최소 글자 수를 확인해주세요.</S.RequiredSpan>
+            <S.RequiredSpan>최소 글자 수(파일 수)를 확인해주세요.</S.RequiredSpan>
           </S.RequiredSection>
         ) : null}
       </S.Card>

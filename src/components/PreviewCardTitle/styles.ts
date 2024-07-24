@@ -13,7 +13,6 @@ export const TitleSection = styled.div`
   width: 100%;
   justify-content: flex-start;
   align-items: center;
-  margin-bottom: 8px;
 `;
 
 export const Title = styled.span<{ isTitle: boolean }>`

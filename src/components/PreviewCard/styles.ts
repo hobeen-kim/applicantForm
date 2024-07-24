@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import React from "react";
 
 export const Container = styled.div`
   position: relative;
@@ -22,16 +23,21 @@ export const Card = styled.div<{ needToCompleteRequired: boolean, needToComplete
   box-sizing: border-box;
 `;
 
-export const TitleHighlight = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: ${({ theme }) => theme.colors.BLUE_HEAVY};
+export const TitleHighlight = styled.div<{ image: string }>`
+  background-image: url(${({ image }) => image});
+  background-size: 100% 100%; /* 이미지 크기 조정 */
+  background-repeat: no-repeat; /* 이미지 반복 방지 */
+  position: relative;
+  top: -24px;
+  left: -24px;
   min-width: 100%;
-  width: 100%;
-  height: 10px;
+  width: 638px;
+  height: 150px;
   z-index: 20;
+  border-radius: 8px 8px 0 0; /* 위쪽 두 모서리만 라운드 */
+
 `;
+
 
 export const RequiredSection = styled.div`
   display: flex;

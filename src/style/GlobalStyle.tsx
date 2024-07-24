@@ -21,14 +21,30 @@ const GlobalStyle = createGlobalStyle`
         font-size: 100%;
         font: inherit;
         vertical-align: baseline;
+        font-family: Arial, sans-serif;
+        line-height: 1.2; /* 줄 간격을 1.5배로 설정 */
+    }
+
+    h1, h2, h3, h4, h5, h6, p {
+        vertical-align: baseline;
+        font-family: Arial, sans-serif;
+        line-height: 1.3;
+    }
+    
+    b {
+        font-size: 14px;
+        vertical-align: baseline;
+        font-family: Arial, sans-serif;
+        line-height: 1.2;
     }
     
     img {
         max-width: 100%;
+        margin-top: 8px;
         height: auto;
         display: block;
     }
-
+    
     /* HTML5 display-role reset for older browsers */
     article, aside, details, figcaption, figure,
     footer, header, hgroup, main, menu, nav, section {

@@ -45,6 +45,7 @@ export enum InputTypes {
   RADIO = "RADIO",
   CHECKBOX = "CHECKBOX",
   SELECT = "SELECT",
+  FILE = "FILE",
 }
 
 const initialCards = {

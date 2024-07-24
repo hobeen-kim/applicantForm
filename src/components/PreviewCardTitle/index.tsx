@@ -20,6 +20,11 @@ const PreviewCardTitle = ({ id }: Pick<CardProps, "id">) => {
     return currentCard.contents;
   }) as string;
 
+  const subText: string = useSelector((state: StateProps) => {
+    const currentCard = state.cards.find((card) => card.id === id) as CardProps;
+    return currentCard.subText;
+  }) as string;
+
   const isRequired = useSelector((state: StateProps) => {
     const currentCard = state.cards.find((card) => card.id === id) as CardProps;
     return currentCard.isRequired;
@@ -40,7 +45,7 @@ const PreviewCardTitle = ({ id }: Pick<CardProps, "id">) => {
       {isTitle ? (
         <>
           <S.DescriptionSection>
-            <S.Description>{contents}</S.Description>
+          <S.Description dangerouslySetInnerHTML={{ __html: subText }}/>
           </S.DescriptionSection>
           <S.Footer>{haveRequired ? <S.RequireMark>* 필수항목</S.RequireMark> : null}</S.Footer>
         </>
