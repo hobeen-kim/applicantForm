@@ -1,19 +1,18 @@
 /* eslint-disable no-continue */
 /* eslint-disable no-plusplus */
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useForm, FormProvider } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 
 import PreviewCard from "../../components/PreviewCard";
-import { CardProps, InputTypes, removeRequiredCardId, setRequiredCardId, StateProps } from "../../store";
+import { InputTypes, removeRequiredCardId, setRequiredCardId, StateProps } from "../../store";
 import * as S from "./styles";
 
 const Preview = () => {
   const { cards } = useSelector((state: StateProps) => state);
   const methods = useForm();
   const navigate = useNavigate();
-  const [customCards, setCustomCards] = useState<CardProps[]>([]);
 
   const dispatch = useDispatch();
 
@@ -24,30 +23,6 @@ const Preview = () => {
     console.log(programId)
     console.log(cards)
   };
-
-  useEffect(() => {
-    if (programId) {
-        const newCustomCards: CardProps[] = [
-          {
-            id: "1",
-            cardTitle: "Sample Card 1",
-            inputType: InputTypes.TEXT, // Ensure InputTypes.TEXT is correctly imported and used
-            contents: "Sample content",
-            isFocused: false,
-            isRequired: true
-          },
-          {
-            id: "2",
-            cardTitle: "Sample Card 2",
-            inputType: InputTypes.RADIO, // Ensure InputTypes.RADIO is correctly imported and used
-            contents: [{ id: "2-1", text: "Option 1" }, { id: "2-2", text: "Option 2", isEtc: true }],
-            isFocused: false,
-            isRequired: false
-          }
-        ];
-        setCustomCards(newCustomCards);
-      }
-  }, []);
 
   const handleClick = () => {
     const CardIdArr = Object.keys(methods.getValues());

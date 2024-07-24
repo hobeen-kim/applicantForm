@@ -7,10 +7,12 @@ import * as S from "./styles";
 import Card from "../../components/Card";
 import AddCardButton from "../../components/AddCardButton";
 import { InputTypes, moveCard, moveContent, StateProps } from "../../store";
+import { useParams } from "react-router-dom";
 
 const Form = () => {
   const { cards } = useSelector((state: StateProps) => state);
   const dispatch = useDispatch();
+  const { programId } = useParams();
 
   const openPreviewTab = () => {
     window.open("/preview", "_blank");

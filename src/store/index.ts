@@ -261,7 +261,15 @@ const cardSlice = createSlice({
       const tmp = contents.splice(Number(action.payload.sourceIndex), 1);
       contents.splice(Number(action.payload.destinationIndex), 0, ...tmp);
     },
-  },
+
+    // New reducer for initializing cards
+    initCards: (state: CardProps[], action: { payload: CardProps[] }) => {
+      const copiedState = state.filter((card) => card.id === "-1");
+      copiedState.push(...action.payload);
+
+      return copiedState;
+    }
+  }
 });
 
 const reducers = combineReducers({
@@ -301,6 +309,7 @@ export const {
   toggleIsRequired,
   moveCard,
   moveContent,
+  initCards,
 } = cardSlice.actions;
 export const { setRequiredCardId, removeRequiredCardId } = requiredSlice.actions;
 
