@@ -11,8 +11,8 @@ const SubText = ({ id }: Pick<CardProps, "id">) => {
   }
 
   return (
-    <S.SubTextField>{currentCard.subText}</S.SubTextField>
-  );
+    <S.SubTextField dangerouslySetInnerHTML={{ __html: currentCard.subText }} />
+);
 };
 
 export default SubText;

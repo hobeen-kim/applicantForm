@@ -75,7 +75,8 @@ const Applicant = () => {
         cardTitle: "Sample Card 1",
         inputType: InputTypes.TEXT, // Ensure InputTypes.TEXT is correctly imported and used
         contents: "card 1 contents 항목",
-        subText: "card 1 subText",
+        subText: "<b>bold Text</b><span>not bold</span><h1>test h1</h1><span style='font-size: 22px'>fontsize test</span><span style='color: red'>colortest</span>" +
+          "<img src='https://form.monthler.kr/youth-sketch/p1.png'>",
         placeholder: "card 1 placeholder text",
         isFocused: false,
         isRequired: true

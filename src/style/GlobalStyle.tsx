@@ -1,12 +1,13 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
+    //h1, h2, h3, h4, h5, h6, p, b,
     html, body, div, span, applet, object, iframe,
-    h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+    blockquote, pre,
     a, abbr, acronym, address, big, cite, code,
     del, dfn, em, img, ins, kbd, q, s, samp,
     small, strike, strong, sub, sup, tt, var,
-    b, u, i, center,
+    u, i, center,
     dl, dt, dd, menu, ol, ul, li,
     fieldset, form, label, legend,
     table, caption, tbody, tfoot, thead, tr, th, td,
@@ -20,6 +21,12 @@ const GlobalStyle = createGlobalStyle`
         font-size: 100%;
         font: inherit;
         vertical-align: baseline;
+    }
+    
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
     }
 
     /* HTML5 display-role reset for older browsers */
