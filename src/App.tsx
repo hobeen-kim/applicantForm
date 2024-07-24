@@ -9,6 +9,7 @@ import Applicant from "./pages/Applicant";
 const App = () => (
   <BrowserRouter>
     <Routes>
+      <Route path="/" element={<Applicant />} />
       <Route path="/form/:programId" element={<Form />} />
       <Route path="/preview" element={<Preview />} />
       <Route path="/form/applicant/:programId" element={<Applicant />} />

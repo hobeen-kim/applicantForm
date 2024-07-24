@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const PreviewSubmitSection = styled.div`
   display: flex;
-  width: 640px;
+  width: 100%;
   justify-content: space-between;
   margin-top: 16px;
 `;

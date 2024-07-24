@@ -312,14 +312,13 @@ const Applicant = () => {
   }
 
   useEffect(() => {
-      if (programId) {
-        // Fetch data from the server
-        console.log("fetch data from the server")
+      // Fetch data from the server
+      console.log("fetch data from the server")
 
-        const newCards = getCardProps()
+      const newCards = getCardProps()
 
-        dispatch(initCards(newCards))
-      }
+      dispatch(initCards(newCards))
+
   }, []);
 
   const handleClick = () => {

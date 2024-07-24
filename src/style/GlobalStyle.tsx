@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
     small, strike, strong, sub, sup, tt, var,
     u, i, center,
     dl, dt, dd, menu, ol, ul, li,
-    fieldset, form, label, legend,
+    fieldset, label, legend,
     table, caption, tbody, tfoot, thead, tr, th, td,
     article, aside, canvas, details, embed,
     figure, figcaption, footer, header, hgroup,
@@ -23,6 +23,21 @@ const GlobalStyle = createGlobalStyle`
         vertical-align: baseline;
         font-family: Arial, sans-serif;
         line-height: 1.2; /* 줄 간격을 1.5배로 설정 */
+    }
+    
+    form {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+        font-family: Arial, sans-serif;
+        line-height: 1.2; /* 줄 간격을 1.5배로 설정 */
+        width: 640px;
+        @media (max-width: 768px) {
+            width: 100%;
+        }
     }
 
     h1, h2, h3, h4, h5, h6, p {

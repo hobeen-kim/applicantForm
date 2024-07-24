@@ -12,6 +12,7 @@ import SubText from "../SubText";
 import InputTextAreaField from "../InputTextAreaField";
 import InputFile from "../InputFile";
 import InputFileList from "../InputFileList";
+import { HeightSpace } from "./styles";
 
 const PreviewCard = ({ id }: Pick<CardProps, "id">) => {
   const inputType = useSelector((state: StateProps) => {
@@ -35,6 +36,7 @@ const PreviewCard = ({ id }: Pick<CardProps, "id">) => {
     <S.Container>
       <S.Card needToCompleteRequired={needToCompleteRequired} needToCompleteLengthMin={needToCompleteLengthMin}>
         {isTitle ? <S.TitleHighlight image={contents}/> : null}
+        {isTitle ? <S.HeightSpace/> : null}
         <PreviewCardTitle id={id} />
         {inputType !== InputTypes.TITLE ? <SubText id={id} /> : null}
         {inputType === InputTypes.TEXT ? <InputTextField id={id} /> : null}

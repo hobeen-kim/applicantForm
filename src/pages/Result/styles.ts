@@ -15,6 +15,9 @@ export const Card = styled.div`
   background-color: ${({ theme }) => theme.colors.WHITE};
   min-height: 131px;
   width: 640px;
+    @media (max-width: 768px) {
+        width: 100%;
+    }
   padding: 24px;
   box-sizing: border-box;
   gap: 16px;
