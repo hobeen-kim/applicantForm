@@ -24,7 +24,7 @@ export const TitleHighlight = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  background-color: ${({ theme }) => theme.colors.PURPLE_HEAVY};
+  background-color: ${({ theme }) => theme.colors.BLUE_HEAVY};
   min-width: 100%;
   width: 100%;
   height: 10px;
@@ -36,7 +36,7 @@ export const ResultContainer = styled.div`
   flex-direction: column;
   padding: 16px 12px;
   border-radius: 4px;
-  border: ${({ theme }) => `1px solid ${theme.colors.PURPLE_LIGHT}`};
+  border: ${({ theme }) => `1px solid ${theme.colors.BLUE_LIGHT}`};
 `;
 
 export const ResultTitleSection = styled.div`
@@ -52,7 +52,7 @@ export const ResultTitle = styled.span`
 
 export const ResultType = styled.span`
   font-size: 12px;
-  background-color: ${({ theme }) => theme.colors.PURPLE_HEAVY};
+  background-color: ${({ theme }) => theme.colors.BLUE_HEAVY};
   color: ${({ theme }) => theme.colors.WHITE};
   padding: 6px;
   border-radius: 4px;

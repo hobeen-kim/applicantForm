@@ -51,9 +51,9 @@ export const FormControlLabel = styled(MuiFormControlLabel)`
 
 export const Switch = styled(MuiSwitch)`
   .Mui-checked {
-    color: ${({ theme }) => theme.colors.PURPLE_HEAVY} !important;
+    color: ${({ theme }) => theme.colors.BLUE_HEAVY} !important;
   }
   .MuiSwitch-track {
-    background-color: ${({ theme }) => theme.colors.PURPLE_MEDIUM} !important;
+    background-color: ${({ theme }) => theme.colors.BLUE_MEDIUM} !important;
   }
 `;

@@ -18,7 +18,7 @@ export const Radio = styled.input`
   width: 20px;
   height: 20px;
   :checked {
-    border: ${({ theme }) => `6px solid ${theme.colors.PURPLE_HEAVY}`};
+    border: ${({ theme }) => `6px solid ${theme.colors.BLUE_HEAVY}`};
   }
 `;
 
@@ -39,7 +39,7 @@ export const TextField = styled(MuiTextField)`
     }
 
     ::after {
-      border-bottom: ${({ theme }) => `2px solid ${theme.colors.PURPLE_HEAVY}`};
+      border-bottom: ${({ theme }) => `2px solid ${theme.colors.BLUE_HEAVY}`};
     }
   }
 `;

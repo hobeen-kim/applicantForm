@@ -34,7 +34,7 @@ export const Container = styled.div<{ $isFocused: boolean }>`
       border-bottom: none !important;
     }
     ::after {
-      border-bottom: ${({ theme }) => `2px solid ${theme.colors.PURPLE_HEAVY}`};
+      border-bottom: ${({ theme }) => `2px solid ${theme.colors.BLUE_HEAVY}`};
     }
   }
 `;
@@ -110,6 +110,6 @@ export const ContentDndHandle = styled.div<{ $isFocused: boolean }>`
   z-index: 20;
   border-radius: 4px;
   :hover {
-    background-color: ${({ theme }) => theme.colors.PURPLE_MEDIUM};
+    background-color: ${({ theme }) => theme.colors.BLUE_MEDIUM};
   }
 `;

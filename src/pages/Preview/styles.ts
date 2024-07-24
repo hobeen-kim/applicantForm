@@ -10,7 +10,7 @@ export const PreviewSubmitSection = styled.div`
 export const ClearButton = styled.button`
   border: none;
   background-color: transparent;
-  color: ${({ theme }) => theme.colors.PURPLE_HEAVY};
+  color: ${({ theme }) => theme.colors.BLUE_HEAVY};
   border-radius: 4px;
   padding: 6px;
   :hover {
@@ -21,7 +21,7 @@ export const ClearButton = styled.button`
 export const SubmitButton = styled.button`
   width: 72px;
   height: 36px;
-  background-color: ${({ theme }) => theme.colors.PURPLE_HEAVY};
+  background-color: ${({ theme }) => theme.colors.BLUE_HEAVY};
   color: ${({ theme }) => theme.colors.WHITE};
   border: none;
   border-radius: 4px;

@@ -20,7 +20,7 @@ export const TextAreaField = styled(MuiTextField)<{
         }
 
         ::after {
-            border-bottom: ${({ theme }) => `2px solid ${theme.colors.PURPLE_HEAVY}`};
+            border-bottom: ${({ theme }) => `2px solid ${theme.colors.BLUE_HEAVY}`};
         }
     }
 `;

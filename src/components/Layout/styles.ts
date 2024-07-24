@@ -11,5 +11,5 @@ export const Container = styled.div`
   margin: 0;
   margin-bottom: 64px;
   padding: 0 auto;
-  background-color: ${({ theme }) => theme.colors.PURPLE_LIGHT};
+  background-color: ${({ theme }) => theme.colors.BLUE_LIGHT};
 `;

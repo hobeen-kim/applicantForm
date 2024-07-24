@@ -202,14 +202,6 @@ const Applicant = () => {
         ))}
         <S.PreviewSubmitSection>
           <S.SubmitButton type="submit">제출</S.SubmitButton>
-          <S.ClearButton
-            type="button"
-            onClick={() => {
-              window.location.reload();
-            }}
-          >
-            양식 지우기
-          </S.ClearButton>
         </S.PreviewSubmitSection>
       </form>
     </FormProvider>

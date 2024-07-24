@@ -39,7 +39,7 @@ export const TitleHighlight = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  background-color: ${({ theme }) => theme.colors.PURPLE_HEAVY};
+  background-color: ${({ theme }) => theme.colors.BLUE_HEAVY};
   min-width: 100%;
   width: 100%;
   height: 10px;
