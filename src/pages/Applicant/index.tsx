@@ -4,8 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useForm, FormProvider } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
-
-import PreviewCard from "../../components/PreviewCard";
+import { Helmet } from "react-helmet";
 import Section from "../../components/Section";
 import {
   SectionProps,
@@ -417,6 +416,9 @@ const Applicant = () => {
 
   return (
     <FormProvider {...methods}>
+      <Helmet>
+        <title>{sections[0]?.cards[0]?.cardTitle || "Default Title"}</title>
+      </Helmet>
       <form
         onSubmit={methods.handleSubmit(() => {
           try {
