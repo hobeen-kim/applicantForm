@@ -4,8 +4,16 @@ import { TextField as MuiTextField } from "@mui/material";
 export const RadioContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 10px;
   margin-top: 4px;
+`;
+
+export const RadioSingleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: #f7f9fd;
+  padding: 15px 10px;
+  border-radius: 6px;
 `;
 
 export const Radio = styled.input`
