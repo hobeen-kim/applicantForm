@@ -7,8 +7,10 @@ export const Container = styled.div`
   overflow: hidden;
   margin-top: 16px;
   justify-content: center;
+
   @media (max-width: 768px) {
-    width: 100%;
+    width: calc(100% - 20px);
+    margin: 6px 10px;
   }
   width: 660px;
 `;
@@ -18,7 +20,6 @@ export const Section = styled.div`
   flex-direction: column;
   border: 0px solid ${({ theme }) => theme.colors.GREY_HEAVY};
   border-radius: 12px;
-  // background-color: ${({ theme }) => theme.colors.WHITE};
   min-height: 131px;
   @media (max-width: 768px) {
     width: 100%;
@@ -26,16 +27,20 @@ export const Section = styled.div`
   width: 100%;
   box-sizing: border-box;
 `;
-
+// 섹션 위에 이미지 수정
 export const TitleHighlight = styled.div<{ image: string }>`
   background-image: url(${({ image }) => image});
   background-size: 100% auto; /* 이미지 크기 조정 */
   background-repeat: no-repeat; /* 이미지 반복 방지 */
   position: absolute;
-  width: 100%;
-  height: 200px;
+  width: calc(100% - 20px);
+  height: 180px;
+  @media (max-width: 768px) {
+    height: 140px;
+  }
   z-index: 21;
-  border-radius: 12px 12px 0 0; /* 위쪽 두 모서리만 라운드 */
+  margin: 6px 10px;
+  border-radius: 8px 8px 0 0; /* 위쪽 두 모서리만 라운드 */
 `;
 
 export const SectionTitle = styled.div`

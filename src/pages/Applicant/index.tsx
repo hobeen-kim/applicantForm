@@ -463,7 +463,7 @@ const Applicant = () => {
           <Section section={section} />
         ))}
         <S.PreviewSubmitSection>
-          <S.SubmitButton type="submit">제출</S.SubmitButton>
+          <S.SubmitButton type="submit">제출하기</S.SubmitButton>
         </S.PreviewSubmitSection>
       </form>
       <PageFooter partnerName={partnerName} />

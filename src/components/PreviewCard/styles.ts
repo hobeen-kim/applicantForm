@@ -27,15 +27,15 @@ export const Card = styled.div<{ needToRed: boolean; isTitle: boolean }>`
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.WHITE};
   min-height: 80px;
-  @media (max-width: 768px) {
-    margin: 10px 20px;
-  }
   padding: 20px 20px 30px 20px;
   box-sizing: border-box;
 `;
 
 export const HeightSpace = styled.div`
-  height: 170px;
+  height: 180px;
+  @media (max-width: 768px) {
+    height: 140px;
+  }
   z-index: 20;
   border-radius: 8px 8px 0 0; /* 위쪽 두 모서리만 라운드 */
 `;
