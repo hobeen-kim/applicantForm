@@ -9,36 +9,29 @@ export const Container = styled.div`
   justify-content: center;
 `;
 
-export const Card = styled.div<{ needToCompleteRequired: boolean, needToCompleteLengthMin: boolean }>`
+export const Card = styled.div<{ needToRed: boolean, isTitle: boolean }>`
   display: flex;
   flex-direction: column;
-  border: ${({ theme, needToCompleteRequired, needToCompleteLengthMin }) =>
-    needToCompleteRequired || needToCompleteLengthMin
-      ? `1px solid ${theme.colors.RED}`
-      : `1px solid ${theme.colors.GREY_HEAVY}`};
+  border: ${({ theme, needToRed, isTitle }) => {
+    if (isTitle) {
+      return `none`;
+    }
+    if (needToRed) {
+      return `1px solid ${theme.colors.RED}`;
+    }
+    return `1px solid ${theme.colors.GREY_HEAVY}`;
+  }};
+    
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.WHITE};
   min-height: 131px;
   @media (max-width: 768px) {
-      width: 100%;
+      width: 95%;
   }
   width: 640px;
   padding: 24px;
+  margin: 10px;
   box-sizing: border-box;
-`;
-
-export const TitleHighlight = styled.div<{ image: string }>`
-  background-image: url(${({ image }) => image});
-  background-size: 100% 100%; /* 이미지 크기 조정 */
-  background-repeat: no-repeat; /* 이미지 반복 방지 */
-  position: absolute;
-  top: -24px;
-  left: -24px;
-  width: 108%;
-  height: 200px;
-  z-index: 20;
-  border-radius: 8px 8px 0 0; /* 위쪽 두 모서리만 라운드 */
-
 `;
 
 export const HeightSpace = styled.div`

@@ -6,8 +6,10 @@ import { InputTypes } from "../../store";
 export const TextField = styled(MuiTextField)<{
   $inputType: string;
 }>`
-  width: ${({ $inputType }) => ($inputType === InputTypes.TEXT ? "295px" : "590px")};
-
+  width: 295px;
+  @media (max-width: 768px) {
+      width: 80%;
+  }
   div {
     font-size: 14px;
 

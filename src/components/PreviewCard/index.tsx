@@ -34,8 +34,7 @@ const PreviewCard = ({ id }: Pick<CardProps, "id">) => {
 
   return (
     <S.Container>
-      <S.Card needToCompleteRequired={needToCompleteRequired} needToCompleteLengthMin={needToCompleteLengthMin}>
-        {isTitle ? <S.TitleHighlight image={contents}/> : null}
+      <S.Card needToRed={needToCompleteRequired || needToCompleteLengthMin} isTitle={isTitle}>
         {isTitle ? <S.HeightSpace/> : null}
         <PreviewCardTitle id={id} />
         {inputType !== InputTypes.TITLE ? <SubText id={id} /> : null}

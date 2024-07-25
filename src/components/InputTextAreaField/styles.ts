@@ -5,8 +5,10 @@ import { InputTypes } from "../../store";
 export const TextAreaField = styled(MuiTextField)<{
   $inputType: string;
 }>`
-    width: ${({ $inputType }) => ($inputType === InputTypes.TEXT ? "295px" : "590px")};
-
+    width: 590px;
+    @media (max-width: 768px) {
+        width: 100%;
+    }
     textarea {
         font-size: 14px;
         height: ${({ $inputType }) => ($inputType === InputTypes.TEXT ? "auto" : "180px")}; // Adjust height as needed
