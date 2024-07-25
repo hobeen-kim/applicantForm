@@ -219,7 +219,7 @@ const Applicant = () => {
         ]
       },
       {
-        sectionTitle: "신청서",
+        sectionTitle: "참가 신청서",
         isTitle: false,
         cards: [
           {
@@ -293,7 +293,13 @@ const Applicant = () => {
             placeholder: "포트폴리오 링크 주소",
             isFocused: false,
             isRequired: isRequire,
-          },
+          }
+        ]
+      },
+      {
+        sectionTitle: "동의서 및 안내사항",
+        isTitle: false,
+        cards: [
           {
             id: "18",
             cardTitle: "개인정보 수집 및 이용 동의서",
