@@ -22,41 +22,43 @@ const InputRadio = ({ id }: Pick<CardProps, "id">) => {
       render={({ field: { onChange } }) => (
         <S.RadioContainer>
           {contents.map((content) => (
-            <div key={content.id}>
-              <S.Radio
-                ref={etcRefRadio}
-                type="radio"
-                name={id}
-                id={content.id}
-                value={content.isEtc ? etcRef.current?.value : content.text}
-                onChange={(e) => {
-                  if (content.isEtc) {
-                    onChange(etcRef.current?.value);
-                  } else {
-                    onChange(e.target.value);
-                  }
-                }}
-              />
-              <S.Label htmlFor={content.id}>
-                {content.isEtc ? (
-                  <>
-                    <span>기타: </span>
-                    <S.TextField
-                      id="standard-basic"
-                      variant="standard"
-                      inputRef={etcRef}
-                      onChange={() => {
-                        if (etcRefRadio.current?.checked) {
-                          onChange(etcRef.current?.value);
-                        }
-                      }}
-                    />
-                  </>
-                ) : (
-                  content.text
-                )}
-              </S.Label>
-            </div>
+            <S.RadioSingleContainer>
+              <div key={content.id}>
+                <S.Radio
+                  ref={etcRefRadio}
+                  type="radio"
+                  name={id}
+                  id={content.id}
+                  value={content.isEtc ? etcRef.current?.value : content.text}
+                  onChange={(e) => {
+                    if (content.isEtc) {
+                      onChange(etcRef.current?.value);
+                    } else {
+                      onChange(e.target.value);
+                    }
+                  }}
+                />
+                <S.Label htmlFor={content.id}>
+                  {content.isEtc ? (
+                    <>
+                      <span>기타: </span>
+                      <S.TextField
+                        id="standard-basic"
+                        variant="standard"
+                        inputRef={etcRef}
+                        onChange={() => {
+                          if (etcRefRadio.current?.checked) {
+                            onChange(etcRef.current?.value);
+                          }
+                        }}
+                      />
+                    </>
+                  ) : (
+                    content.text
+                  )}
+                </S.Label>
+              </div>
+            </S.RadioSingleContainer>
           ))}
         </S.RadioContainer>
       )}

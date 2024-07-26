@@ -19,11 +19,17 @@ export const ClearButton = styled.button`
 `;
 
 export const SubmitButton = styled.button`
-  width: 100%;
-  height: 36px;
+  width: 300px;
+  padding: 18px;
+  font-size: 16px;
   background-color: ${({ theme }) => theme.colors.BLUE_HEAVY};
   color: ${({ theme }) => theme.colors.WHITE};
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
+  margin: 0 auto;
+  :hover {
+    scale: 1.1;
+    transition: 0.3s;
+  }
 `;

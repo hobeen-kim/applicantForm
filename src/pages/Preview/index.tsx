@@ -19,9 +19,9 @@ const Preview = () => {
   const { programId } = useParams();
 
   const sendData = async () => {
-    console.log("send data")
-    console.log(programId)
-    console.log(cards)
+    console.log("send data");
+    console.log(programId);
+    console.log(cards);
   };
 
   const handleClick = () => {
@@ -34,7 +34,7 @@ const Preview = () => {
               (value) => !!value,
             );
             if (isRequiredComplete) {
-              dispatch(removeRequiredCardId( { cardId: cards[j].id }));
+              dispatch(removeRequiredCardId({ cardId: cards[j].id }));
               continue;
             } else {
               dispatch(setRequiredCardId({ cardId: cards[j].id }));
@@ -44,7 +44,7 @@ const Preview = () => {
             const isRequiredComplete = !!methods.getValues()[cards[j].id];
 
             if (isRequiredComplete) {
-              dispatch(removeRequiredCardId( { cardId: cards[j].id }));
+              dispatch(removeRequiredCardId({ cardId: cards[j].id }));
               continue;
             } else {
               dispatch(setRequiredCardId({ cardId: cards[j].id }));

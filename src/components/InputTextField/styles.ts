@@ -6,15 +6,18 @@ import { InputTypes } from "../../store";
 export const TextField = styled(MuiTextField)<{
   $inputType: string;
 }>`
-  width: 295px;
+  width: 100%;
   @media (max-width: 768px) {
-      width: 80%;
+    // width: 80%;
   }
   div {
     font-size: 14px;
+    background-color: #f7f9fd;
+    padding: 15px 20px;
+    border-radius: 6px;
 
     ::before {
-      border-bottom: ${({ theme }) => `1px solid ${theme.colors.GREY_HEAVY}`} !important;
+      border-bottom: ${({ theme }) => `0px solid ${theme.colors.GREY_HEAVY}`} !important;
     }
 
     ::after {

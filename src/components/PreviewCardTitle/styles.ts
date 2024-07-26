@@ -16,8 +16,9 @@ export const TitleSection = styled.div`
 `;
 
 export const Title = styled.span<{ isTitle: boolean }>`
-  padding: 8px 0;
-  font-size: ${({ isTitle }) => (isTitle ? "32px" : "16px")};
+  padding: 8px 0 8px 3px;
+  font-size: ${({ isTitle }) => (isTitle ? "32px" : "18px")};
+  font-weight: bold;
 `;
 
 export const RequireMark = styled.span`
