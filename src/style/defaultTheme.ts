@@ -9,7 +9,7 @@ const defaultTheme: DefaultTheme = {
     PURPLE_HEAVY: "#673AB7",
     BLUE_LIGHT: "#EFF5FD",
     BLUE_MEDIUM: "#9bbfed",
-    BLUE_HEAVY: "#0a31ef",
+    BLUE_HEAVY: "#0B24FB",
     GREY_LIGHT: "#F8F9FA",
     GREY_MEDIUM: "#F1F3F4",
     GREY_HEAVY: "#DADCE0",
